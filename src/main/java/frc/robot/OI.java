@@ -20,15 +20,18 @@ public class OI {
 
     // Create enum for different buttons
     public enum Button {
-        LOL_1, LOL_2
+        buttonA, buttonB
     }
 
     public boolean get(final Button button) {
         switch (button) {
-        case LOL_1:
-            return leftController.getRawButton(0);
-        case LOL_2:
-            return rightController.getRawButton(0);
+        case buttonA:
+            
+            return leftController.getRawButtonReleased(5);
+
+        case buttonB:
+            return leftController.getRawButton(1);
+
         default:
             return false;
         }
