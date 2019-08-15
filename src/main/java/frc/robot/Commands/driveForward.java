@@ -34,7 +34,7 @@ public class driveForward extends PIDCommand {
   }
 
   public void setpoint(double value) {
-    getPIDController().setSetpoint(value);
+    getPIDController().setSetpoint(0.5);
   }
 
   
