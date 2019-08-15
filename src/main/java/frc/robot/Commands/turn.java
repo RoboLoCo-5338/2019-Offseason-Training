@@ -19,7 +19,8 @@ public class turn extends PIDCommand {
    */
   public turn(double angle) {
     // Intert a subsystem name and PID values here
-    super(1, 2, 3);
+
+    super(1, 2, 3); //we need to adjust these sometime
 
     requires(Robot.drivetrain);
     requires(Robot.sensors);
@@ -34,6 +35,7 @@ public class turn extends PIDCommand {
   }
 
   public void setpoint(double value) {
+    //sets point to turn to
     getPIDController().setSetpoint(value);
   }
 
@@ -56,6 +58,7 @@ public class turn extends PIDCommand {
 
 @Override
 protected boolean isFinished() {
+  //stops when turned completely
   Robot.drivetrain.autodrive(0.0, 0.0);
   return true;
 }
