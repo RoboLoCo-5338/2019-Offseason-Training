@@ -53,7 +53,10 @@ public void drive(OI oi){
   }
   DRIVE.tankDrive(oi.getLeftJoystick('Y') * speed, oi.getRightJoystick('Y') * speed);
 
-  
+}
+
+public void autodrive (double left, double right) {
+  DRIVE.tankDrive(left, right);
 }
 
   

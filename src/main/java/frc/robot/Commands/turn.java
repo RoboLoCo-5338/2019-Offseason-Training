@@ -8,7 +8,6 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.Robot;
 
 /**
@@ -28,26 +27,37 @@ public class turn extends PIDCommand {
     // setSetpoint() - Sets where the PID controller should move the system
     // to
     // enable() - Enables the PID controller.
+
+    this.setpoint(angle);
+    getPIDController().enable();
+
   }
 
-  
+  public void setpoint(double value) {
+    getPIDController().setSetpoint(value);
+  }
+
+
   @Override
   protected double returnPIDInput() {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return 0.0;
+    return Robot.sensors.ahrs.getYaw();
   }
 
   @Override
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
+
+    Robot.drivetrain.autodrive(-output, output);
   }
 
 @Override
 protected boolean isFinished() {
-	return false;
+  Robot.drivetrain.autodrive(0.0, 0.0);
+  return true;
 }
 
 }
