@@ -14,7 +14,7 @@ import frc.robot.Robot;
 public class driveForward extends PIDCommand {
 
 
-  double encoderticks;
+ 
 
   public driveForward(double distance) {
   
@@ -24,11 +24,12 @@ public class driveForward extends PIDCommand {
     //USE THESE TO CALCULATE DISTANCE INSTEAD OF ENCODERTICKS SINCE WE DONT HAVE AN ENCODER
     // ahrs.getDisplacementY();
     // ahrs.getDisplacementX();
-    encoderticks = (distance / 6 * Math.PI) * 4096;
+    ahrs.getDisplacementY(0.5);
+    ahrs.getDisplacementX(1);
 
    
 
-    this.setpoint(encoderticks);
+    this.setpoint(ahrs.getDisplacement);
 
     getPIDController().enable();
     
