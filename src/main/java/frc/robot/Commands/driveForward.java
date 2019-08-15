@@ -25,12 +25,9 @@ public class driveForward extends PIDCommand {
     //USE THESE TO CALCULATE DISTANCE INSTEAD OF ENCODERTICKS SINCE WE DONT HAVE AN ENCODER
     // ahrs.getDisplacementY();
     // ahrs.getDisplacementX();
-    Robot.sensors.ahrs.getDisplacementY();
-    Robot.sensors.ahrs.getDisplacementX();
+    //Robot.sensors.ahrs.getDisplacementY();
 
-   
-
-    this.setpoint(Robot.sensors.ahrs.getDisplacementX());
+    this.setpoint(distance / Robot.sensors.ahrs.getDisplacementY());
 
     getPIDController().enable();
     
