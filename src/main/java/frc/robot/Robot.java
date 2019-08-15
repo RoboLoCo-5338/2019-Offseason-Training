@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Subsystems.Drivetrain;
+import frc.robot.Subsystems.Sensors;
 
 
 /**
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static OI oi = new OI();
+  public static Sensors sensors = new Sensors();
   public static Drivetrain drivetrain = new Drivetrain();
   /**
    * This function is run when the robot is first started up and should be
