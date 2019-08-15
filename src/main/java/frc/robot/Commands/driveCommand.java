@@ -38,6 +38,61 @@ public class driveCommand extends Command {
 
   // Called once after isFinished returns true
   @Override
+  
+  
+  package frc.robot.Commands;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import frc.robot.Robot;
+
+public class driveForward extends PIDCommand {
+
+
+  double encoderticks;
+
+  public driveForward(double distance) {
+  
+    super(1, 1, 1);
+    requires(Robot.drivetrain);
+  
+
+    encoderticks = (distance / 6 * Math.PI) * 4096;
+
+   
+
+    this.setpoint(encoderticks);
+
+    getPIDController().enable();
+    
+  }
+
+  public void setpoint(double value) {
+    getPIDController().setSetpoint(value);
+  }
+
+  
+
+  @Override
+  protected double returnPIDInput() {
+   
+    return Robot.drivetrain.LEFT_1.getSensorCollection().getQuadraturePosition();
+  }
+
+  @Override
+  protected void usePIDOutput(double output) {
+   
+    Robot.drivetrain.drive(output, output);
+  }
+
+  @Override
+  protected boolean isFinished() {
+    Robot.drivetrain.drive(0.0,0.0);
+    return true;
+  }
+}
   protected void end() {
   }
 
