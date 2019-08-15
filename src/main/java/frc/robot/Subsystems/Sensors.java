@@ -25,7 +25,9 @@ public class Sensors extends Subsystem {
     super();
 		while (this.ahrs.isCalibrating()) {
 			; // Calibrating NavX
-		}
+    }
+    // ahrs.getDisplacementY();
+    // ahrs.getDisplacementX();
   }
 
   @Override
