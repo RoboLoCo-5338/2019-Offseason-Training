@@ -16,7 +16,7 @@ public class OI {
 
     // Create joysticks
     private static final Joystick leftController = new Joystick(0);
-    private static final Joystick rightController = new Joystick(0);
+    //private static final Joystick rightController = new Joystick(0);
 
     // Create enum for different buttons
     public enum Button {
