@@ -26,18 +26,18 @@ public class driveForward extends PIDCommand {
     // ahrs.getDisplacementY();
     // ahrs.getDisplacementX();
     Robot.sensors.ahrs.getDisplacementY();
-    Robot.sensors.ahrs.getDisplacementX();
+    
 
    
 
-    this.setpoint(Robot.sensors.ahrs.getDisplacementX());
+    this.setpoint(Robot.sensors.ahrs.getDisplacementY());
 
     getPIDController().enable();
     
   }
 
   public void setpoint(double value) {
-    getPIDController().setSetpoint(value);
+    getPIDController().setSetpoint(0.5);
   }
 
   
