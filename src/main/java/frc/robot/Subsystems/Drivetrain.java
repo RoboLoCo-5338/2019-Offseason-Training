@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.OI;
-import frc.robot.driveCommand;
+import frc.robot.Commands.driveCommand;
 
 
 public class Drivetrain extends Subsystem {
