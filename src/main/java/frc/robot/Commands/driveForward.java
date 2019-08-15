@@ -21,7 +21,9 @@ public class driveForward extends PIDCommand {
     super(1, 1, 1);
     requires(Robot.drivetrain);
   
-
+    //USE THESE TO CALCULATE DISTANCE INSTEAD OF ENCODERTICKS SINCE WE DONT HAVE AN ENCODER
+    // ahrs.getDisplacementY();
+    // ahrs.getDisplacementX();
     encoderticks = (distance / 6 * Math.PI) * 4096;
 
    
