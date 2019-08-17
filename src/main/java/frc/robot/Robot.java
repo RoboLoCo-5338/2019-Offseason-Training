@@ -8,9 +8,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Commands.autonomousCommands;
 import frc.robot.Subsystems.Drivetrain;
 import frc.robot.Subsystems.Sensors;
 
@@ -30,6 +32,8 @@ public class Robot extends TimedRobot {
   public static OI oi = new OI();
   public static Sensors sensors = new Sensors();
   public static Drivetrain drivetrain = new Drivetrain();
+
+  Command autonomous;
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -39,6 +43,8 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+
+    autonomous = new autonomousCommands();
   }
 
   /**
@@ -51,7 +57,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-
   }
 
   /**
@@ -77,21 +82,24 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
-        break;
-      case kDefaultAuto:
-      default:
-        // Put default auto code here
-        break;
-    }
+    // switch (m_autoSelected) {
+    //   case kCustomAuto:
+    //     // Put custom auto code here
+    //     break;
+    //   case kDefaultAuto:
+    //   default:
+    //     // Put default auto code here
+    //     break;
+    // }
+    
+    autonomous.start();
+
   }
 
   @Override
   public void teleopInit() {
     Scheduler.getInstance().removeAll();
-    //commandgroup.cancel 
+    autonomous.cancel();
   }
 
   /**
