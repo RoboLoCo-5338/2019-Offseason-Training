@@ -7,13 +7,22 @@
 
 package frc.robot.Commands;
 
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Robot;
 
 public class autonomousCommands extends CommandGroup {
   /**
    * Add your docs here.
    */
   public autonomousCommands() {
+
+    requires(Robot.drivetrain);
+    requires(Robot.sensors);
+
+    addSequential(new driveForward(1.0));
+    addSequential(new turn(90));
+    addSequential(new driveForward(1.0));
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
