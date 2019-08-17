@@ -8,6 +8,7 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 /**
@@ -20,7 +21,7 @@ public class turn extends PIDCommand {
   public turn(double angle) {
     // Intert a subsystem name and PID values here
 
-    super(1, 2, 3); //we need to adjust these sometime
+    super(0.15, 0, 0); //we need to adjust these sometime
 
     requires(Robot.drivetrain);
     requires(Robot.sensors);
@@ -29,6 +30,7 @@ public class turn extends PIDCommand {
     // to
     // enable() - Enables the PID controller.
 
+    Robot.sensors.ahrs.reset();
     this.setpoint(angle);
     getPIDController().enable();
 
@@ -45,15 +47,16 @@ public class turn extends PIDCommand {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return Robot.sensors.ahrs.getYaw();
+    return -Robot.sensors.ahrs.getYaw();
   }
 
   @Override
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
-
-    Robot.drivetrain.autodrive(-output, output);
+    SmartDashboard.putNumber("angle", Robot.sensors.ahrs.getYaw());
+    SmartDashboard.putNumber("setpoint", getPIDController().getSetpoint());
+    Robot.drivetrain.autodrive(-output * 0.5, output * 0.5);
   }
 
 @Override

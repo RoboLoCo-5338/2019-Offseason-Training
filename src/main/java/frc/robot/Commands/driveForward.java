@@ -8,7 +8,7 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class driveForward extends PIDCommand {
@@ -18,16 +18,16 @@ public class driveForward extends PIDCommand {
 
   public driveForward(double distance) {
   
-    super(1, 1, 1);
+    super(1.4, 0, 0);
     requires(Robot.drivetrain);
     requires(Robot.sensors);
+
+    Robot.sensors.ahrs.resetDisplacement();
   
-    //USE THESE TO CALCULATE DISTANCE INSTEAD OF ENCODERTICKS SINCE WE DONT HAVE AN ENCODER
-    // ahrs.getDisplacementY();
-    // ahrs.getDisplacementX();
+    //USE THIS TO CALCULATE DISTANCE INSTEAD OF ENCODERTICKS SINCE WE DONT HAVE AN ENCODER
     //Robot.sensors.ahrs.getDisplacementY();
 
-    this.setpoint(distance / Robot.sensors.ahrs.getDisplacementY());
+    this.setpoint(distance);
 
     getPIDController().enable();
     
@@ -37,18 +37,17 @@ public class driveForward extends PIDCommand {
     getPIDController().setSetpoint(0.5);
   }
 
-  
 
   @Override
   protected double returnPIDInput() {
    
-    return Robot.drivetrain.LEFT_1.getSensorCollection().getQuadraturePosition();
+    return 10.0 * Robot.sensors.ahrs.getDisplacementY();
   }
 
   @Override
   protected void usePIDOutput(double output) {
-   
-    Robot.drivetrain.autodrive(output, output);
+    SmartDashboard.putNumber("dist", Robot.sensors.ahrs.getDisplacementY() * 10.0);
+    Robot.drivetrain.autodrive(0.6 * output, 0.6 * output);
   }
 
   @Override
