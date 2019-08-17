@@ -18,7 +18,7 @@ public class driveForward extends PIDCommand {
 
   public driveForward(double distance) {
   
-    super(1.4, 0, 0);
+    super(0.9, 0, 0);
     requires(Robot.drivetrain);
     requires(Robot.sensors);
 
@@ -34,24 +34,30 @@ public class driveForward extends PIDCommand {
   }
 
   public void setpoint(double value) {
-    getPIDController().setSetpoint(0.5);
+    getPIDController().setSetpoint(value);
   }
 
 
   @Override
   protected double returnPIDInput() {
    
-    return 10.0 * Robot.sensors.ahrs.getDisplacementY();
+    return -9.0 * Robot.sensors.ahrs.getDisplacementY();
   }
 
   @Override
   protected void usePIDOutput(double output) {
-    SmartDashboard.putNumber("dist", Robot.sensors.ahrs.getDisplacementY() * 10.0);
-    Robot.drivetrain.autodrive(0.6 * output, 0.6 * output);
+    SmartDashboard.putNumber("dist", -Robot.sensors.ahrs.getDisplacementY() * 9.0);
+    SmartDashboard.putBoolean("enabled", getPIDController().isEnabled());
+    SmartDashboard.putNumber("output", output);
+    SmartDashboard.putBoolean("isFinished", false);
+    SmartDashboard.putNumber("setpoint", getPIDController().getSetpoint());
+
+    Robot.drivetrain.autodrive(-output * 0.8, -output * 0.8);
   }
 
   @Override
   protected boolean isFinished() {
+    SmartDashboard.putBoolean("isFinished", true);
     Robot.drivetrain.autodrive(0.0,0.0);
     return true;
   }
