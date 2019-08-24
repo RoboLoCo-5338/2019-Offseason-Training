@@ -18,10 +18,12 @@ public class turn extends PIDCommand {
   /**
    * Add your docs here.
    */
-  public turn(double angle) {
+  public double angle;
+
+   public turn(double angle) {
     // Intert a subsystem name and PID values here
 
-    super(0.43375, 0, 0.55); //we need to adjust these sometime
+    super(0.41275, 0, 0);
 
     requires(Robot.drivetrain);
     requires(Robot.sensors);
@@ -30,15 +32,19 @@ public class turn extends PIDCommand {
     // to
     // enable() - Enables the PID controller.
 
-    Robot.sensors.ahrs.reset();
-    this.setpoint(angle);
     getPIDController().setOutputRange(-0.5, 0.5);
+    this.angle = angle;
+    
 
+    //getPIDController().enable();
   }
 
   @Override
   protected void initialize() {
     super.initialize();
+    Robot.sensors.ahrs.reset();
+    this.setpoint(angle);
+    SmartDashboard.putString("Current Command", "turn");
     getPIDController().enable();
   }
 
@@ -68,7 +74,14 @@ public class turn extends PIDCommand {
 
 @Override
 protected boolean isFinished() {
-  return Math.abs(getPIDController().get()) < 0.1;
+  return Math.abs(getPIDController().getError()) < 0.1;
+
+}
+
+@Override
+protected void end() {
+  getPIDController().disable();
+  // Robot.sensors.ahrs.reset();
 }
 
 }

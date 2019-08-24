@@ -19,10 +19,12 @@ public class autonomousCommands extends CommandGroup {
 
     requires(Robot.drivetrain);
     requires(Robot.sensors);
+    //for(int i = 0; i<4; i++){
+      addSequential(new turn(90));
 
-    addSequential(new timeDrive(3000));
-    addSequential(new turn(90));
     //addSequential(new timeDrive(1000));
+    //}
+
 
     // Add Commands here:
     // e.g. addSequential(new Command1());
