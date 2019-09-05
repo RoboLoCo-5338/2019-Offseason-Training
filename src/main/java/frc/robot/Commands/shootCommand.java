@@ -5,6 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+//once upon a time there was a bunny named goerge
+//goerge was sad because his name was weird
+//he cried
+//he cried and cried
+//eventually a bird found him
+//he were like yo dude why are you crying
+//and goerge said im crying because my name is goerge
+//then the bird said thats a stupid name go die
+//goerge got even more sad
+
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
