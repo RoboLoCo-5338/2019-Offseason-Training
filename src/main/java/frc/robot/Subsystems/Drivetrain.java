@@ -39,7 +39,7 @@ public void drive(OI oi){
   float speed = 0.5f;
 
 
-  if(oi.get(OI.Button.buttonA)) {
+  if(oi.get(OI.Button.changeSpeed)) {
     isToggled = !isToggled;
   }
 
