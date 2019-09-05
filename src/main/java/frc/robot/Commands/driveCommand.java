@@ -23,7 +23,7 @@ public class driveCommand extends Command {
   protected void initialize() {
   }
 
-  // Called repeatedly when this Command is scheduled to run
+  // Called repeatedly when this Command is scheduled `to run
   @Override
   protected void execute() {
     Robot.drivetrain.drive(Robot.oi);
