@@ -10,38 +10,38 @@ package frc.robot.Commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class startDrivetrain extends Command {
-  public startDrivetrain() {
+public class startDrivetrain extends Command {  //open class
+  public startDrivetrain() { //open startDrivetrain ()
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);\
     requires(Robot.drivetrain);
-  }
+  } //end startDrivetrain ()
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {
-  }
+  protected void initialize() { //open initialize
+  } //end initialize
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
+  protected void execute() {  //open execute()
     Robot.drivetrain.drive(Robot.oi);
-  }
+  } //end execute ()
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() {
+  protected boolean isFinished() {  //open isFinished()
     return false;
-  }
+  } //end isFinished()
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {
-  }
+  protected void end() {  //open end()
+  } //open end()
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() {
-  }
-}
+  protected void interrupted() {  //open interrupted ()
+  } //end interrupted
+} //end class

@@ -27,7 +27,7 @@ import frc.robot.Commands.startDrivetrain;
 /**
  * Add your docs here.
  */
-public class Drivetrain extends Subsystem {
+public class Drivetrain extends Subsystem { //open class
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private NetworkTable table;
@@ -41,14 +41,14 @@ public class Drivetrain extends Subsystem {
   
   private final DifferentialDrive DRIVE = new DifferentialDrive(this.LEFT_SIDE, this.RIGHT_SIDE);
   @Override
-  public void initDefaultCommand() {
+  public void initDefaultCommand() {  //open start drivetrain
     setDefaultCommand(new startDrivetrain());
-  }
+  } //end start drivetrain
 
-  public void drive(double l, double r){
+  public void drive(double l, double r){  //open drive (tank drive)
     DRIVE.tankDrive(l, r);
-  }
-public void drive(OI oi) {
+  }//end drive (tank drive)
+public void drive(OI oi) {  //open drive (oi)
   double signL = 1;
   if (oi.getLeftJoystick('Y') < 0)
     signL = -1;
@@ -60,8 +60,8 @@ public void drive(OI oi) {
 
   drive(oi.getLeftJoystick('Y') * oi.getLeftJoystick('Y') * signL * 0.7, oi.getRightJoystick('Y') * oi.getRightJoystick('Y') * signR * 0.7);
    
-  }
+  } //end drive (oi)
 
 
 
- }
+ } //end class

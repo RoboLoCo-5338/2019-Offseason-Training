@@ -7,27 +7,37 @@
 
 package frc.robot.Subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.OI;
-import frc.robot.OI.Button;
-import frc.robot.Subsystems.Drivetrain;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;  //import talons
+
+import edu.wpi.first.wpilibj.command.Subsystem; //import commands
+import frc.robot.OI;  //import OI
+import frc.robot.OI.Button; //import button
+import frc.robot.Subsystems.Drivetrain; //import drivetrain
 /**
  * Add your docs here.
  */
-public class WheelShooter extends Subsystem {
+public class WheelShooter extends Subsystem { //open class
+
+  public final WPI_TalonSRX WHEEL_SHOOTER = new WPI_TalonSRX(4); // TODO: change Talon ID
  
-public void wheel(OI oi) {
-  if(oi.get(OI.Button.BUTTONA)) { //oi.get is method
-   // Button.BUTTONA.whenPressed(LEFT_1.set(1));
-  }
-if(oi.get(OI.Button.BUTTONB)){
-  //  Button.BUTTONB.whenPressed(LEFT_2.set(1));
-}
-}
+public void wheel(OI oi) { //open wheel method
+  if(oi.get(OI.Button.BUTTONA)) { //open if
+  WHEEL_SHOOTER.set(1); 
+  }//close if
+  else {  //open else
+    WHEEL_SHOOTER.set(0);
+  } //end else
+} //end wheel method
+
 
   @Override
-  public void initDefaultCommand() {
+  public void initDefaultCommand() {  //open DefaultCommand
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-  }
+  } //end DefaultCommand
+  /*if(oi.get(OI.Button.BUTTONB)){
+Button.BUTTONB.whenPressed(WHEEL_SHOOTER.set(0));
 }
+}
+*/
+} //end class
