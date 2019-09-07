@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 /**
  * Add your docs here.
  */
-public class OI {
+public class OI {   //OI = Operator Input, manages joystick controls
 
     // Create joysticks
     private static final Joystick leftController = new Joystick(0);
@@ -20,15 +20,15 @@ public class OI {
 
     // Create enum for different buttons
     public enum Button {
-        LOL_1, LOL_2
+     BUTTONA, BUTTONB
     }
 
     public boolean get(final Button button) {
         switch (button) {
-        case LOL_1:
-            return leftController.getRawButton(0);
-        case LOL_2:
-            return rightController.getRawButton(0);
+        case BUTTONA:
+            return leftController.getRawButton(5);
+        case BUTTONB:
+            return leftController.getRawButton(1);
         default:
             return false;
         }
