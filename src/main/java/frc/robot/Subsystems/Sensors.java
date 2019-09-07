@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.SPI;
 /**
  * Add your docs here.
  */
-public class Sensors extends Subsystem {
+public class Sensors extends Subsystem {  
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   public final AHRS ahrs = new AHRS(SPI.Port.kMXP, (byte) (200));
