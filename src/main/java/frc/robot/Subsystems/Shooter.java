@@ -22,8 +22,10 @@ public class Shooter extends Subsystem {
   // here. Call these from Commands.
 
   
-  public final WPI_TalonSRX gateTalon = new WPI_TalonSRX(1);
-  public final WPI_TalonSRX shooterTalon = new WPI_TalonSRX(3);
+
+  //change talon ids
+  public final WPI_TalonSRX gateTalon = new WPI_TalonSRX(2);
+  public final WPI_TalonSRX shooterTalon = new WPI_TalonSRX(4);
 
   boolean gateTogg = false;
   boolean shootTogg = false;

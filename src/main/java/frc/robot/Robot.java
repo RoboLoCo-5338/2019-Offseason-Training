@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Commands.autonomousCommands;
+import frc.robot.Commands.turn;
 import frc.robot.Subsystems.Drivetrain;
 import frc.robot.Subsystems.Sensors;
 import frc.robot.Subsystems.Shooter;
@@ -33,7 +34,7 @@ public class Robot extends TimedRobot {
   public static OI oi = new OI();
   public static Sensors sensors = new Sensors();
   public static Drivetrain drivetrain = new Drivetrain();
-  public static Shooter shooter = new Shooter();
+ // public static Shooter shooter = new Shooter();
 
   Command autonomous;
   /**
@@ -103,7 +104,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     Scheduler.getInstance().removeAll();
-    autonomous.cancel();
+   // autonomous.cancel();
   }
 
   /**

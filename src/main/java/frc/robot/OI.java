@@ -20,7 +20,7 @@ public class OI {
 
     // Create enum for different buttons
     public enum Button {
-        changeSpeed, gate, shooter
+        changeSpeed, gate, shooter, limelight, perpLimelight
     }
 
     public boolean get(final Button button) {
@@ -36,6 +36,12 @@ public class OI {
         case shooter:
             //turns on/off shooter wheel
             return leftController.getRawButtonReleased(1);
+
+        case limelight:
+            return leftController.getRawButton(3);
+
+        case perpLimelight:
+            return leftController.getRawButton(4);
 
         default:
             return false;
