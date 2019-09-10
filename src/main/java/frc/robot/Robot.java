@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Commands.autonomousCommands;
 import frc.robot.Subsystems.Drivetrain;
 import frc.robot.Subsystems.Sensors;
-import frc.robot.Subsystems.Shooter;
+//import frc.robot.Subsystems.Shooter;
 
 
 /**
@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
   public static OI oi = new OI();
   public static Sensors sensors = new Sensors();
   public static Drivetrain drivetrain = new Drivetrain();
-  public static Shooter shooter = new Shooter();
+  //public static Shooter shooter = new Shooter();
 
   Command autonomous;
   /**

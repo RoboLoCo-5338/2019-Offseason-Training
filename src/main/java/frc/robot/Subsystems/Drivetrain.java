@@ -36,7 +36,7 @@ public class Drivetrain extends Subsystem {
   
 public void drive(OI oi){
 
-  float speed = 0.5f;
+  float speed = 0.3f;
 
 
   if(oi.get(OI.Button.changeSpeed)) {
