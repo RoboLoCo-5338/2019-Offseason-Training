@@ -40,7 +40,7 @@ public class Drivetrain extends Subsystem {
   boolean isToggled = false;
 
   
-public void drive(OI oi){
+public void drive(OI oi) {
   
   double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0.0);
 
@@ -52,26 +52,26 @@ public void drive(OI oi){
     return;
   }
 
-  if(oi.get(OI.Button.perpLimelight)) {
-    double forwardkp = 0.0; 
-    double currentWidth = NetworkTableInstance.getDefault().getTable("limelight").getEntry("thor").getDouble(0.0);
-    double width = 39.0;
-    double constY = -4.85;
-    double frac = width/currentWidth;
-    double angle = Math.asin(frac);
-    double angleDeg = Math.toDegrees(angle);
-    double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0.0);
+  // if(oi.get(OI.Button.perpLimelight)) {
+  //   double forwardkp = 0.0; 
+  //   double currentWidth = NetworkTableInstance.getDefault().getTable("limelight").getEntry("thor").getDouble(0.0);
+  //   double width = 39.0;
+  //   double constY = -4.85;
+  //   double frac = width/currentWidth;
+  //   double angle = Math.asin(frac);
+  //   double angleDeg = Math.toDegrees(angle);
+  //   double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0.0);
     
-    SmartDashboard.putNumber("current width", currentWidth);
-    SmartDashboard.putNumber("fraction", frac);
-    SmartDashboard.putNumber("angle", angle);
-    SmartDashboard.putNumber("degrees angle", angleDeg);
-    SmartDashboard.putNumber("ty", ty);
+  //   SmartDashboard.putNumber("current width", currentWidth);
+  //   SmartDashboard.putNumber("fraction", frac);
+  //   SmartDashboard.putNumber("angle", angle);
+  //   SmartDashboard.putNumber("degrees angle", angleDeg);
+  //   SmartDashboard.putNumber("ty", ty);
 
  
 
-    return; 
-  }
+  //   return; 
+  // }
 
   float speed = 0.5f;
 
