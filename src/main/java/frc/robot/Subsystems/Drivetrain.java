@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -52,27 +53,22 @@ public void drive(OI oi){
   }
 
   if(oi.get(OI.Button.perpLimelight)) {
+    double forwardkp = 0.0; 
     double currentWidth = NetworkTableInstance.getDefault().getTable("limelight").getEntry("thor").getDouble(0.0);
     double width = 39.0;
     double constY = -4.85;
     double frac = width/currentWidth;
     double angle = Math.asin(frac);
     double angleDeg = Math.toDegrees(angle);
+    double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0.0);
     
     SmartDashboard.putNumber("current width", currentWidth);
     SmartDashboard.putNumber("fraction", frac);
     SmartDashboard.putNumber("angle", angle);
     SmartDashboard.putNumber("degrees angle", angleDeg);
+    SmartDashboard.putNumber("ty", ty);
 
-    double kp = 0.0; 
-    double currentPos = Robot.sensors.ahrs.getYaw();
-
-    double turnAngle = 90 - angleDeg;
-    double error = turnAngle - currentPos; 
-
-    autodrive(-0.5 + kp * error, 0.5 + kp * error);
-
-    
+ 
 
     return; 
   }

@@ -7,29 +7,36 @@
 
 package frc.robot.Commands;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.command.PIDCommand;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.Robot;
 
+/**
+ * Add your docs here.
+ */
 public class driveForward extends PIDCommand {
+  /**
+   * Add your docs here.
+   */
 
-
- 
+  double encoderticks;
 
   public driveForward(double distance) {
-  
-    super(0.9, 0, 0);
+    // Intert a subsystem name and PID values here
+    super(1, 1, 1);
     requires(Robot.drivetrain);
-    requires(Robot.sensors);
-
-    Robot.sensors.ahrs.resetDisplacement();
   
-    //USE THIS TO CALCULATE DISTANCE INSTEAD OF ENCODERTICKS SINCE WE DONT HAVE AN ENCODER
-    //Robot.sensors.ahrs.getDisplacementY();
 
-    this.setpoint(distance);
+    encoderticks = (distance / 6 * Math.PI) * 4096;
 
-    getPIDController().setOutputRange(-0.5, 0.5);
+    // Use these to get going:
+    // setSetpoint() - Sets where the PID controller should move the system
+    // to
+    // enable() - Enables the PID controller
+
+    this.setpoint(encoderticks);
 
     getPIDController().enable();
     
@@ -37,40 +44,28 @@ public class driveForward extends PIDCommand {
 
   public void setpoint(double value) {
     getPIDController().setSetpoint(value);
-    SmartDashboard.putData(this);
   }
 
+  
 
   @Override
   protected double returnPIDInput() {
-   
-    return -9.0 * Robot.sensors.ahrs.getDisplacementY();
+    // Return your input value for the PID loop
+    // e.g. a sensor, like a potentiometer:
+    // yourPot.getAverageVoltage() / kYourMaxVoltage;
+    return Robot.drivetrain.LEFT_1.getSensorCollection().getQuadraturePosition();
   }
 
   @Override
   protected void usePIDOutput(double output) {
-    SmartDashboard.putNumber("dist", -Robot.sensors.ahrs.getDisplacementY() * 9.0);
-    SmartDashboard.putBoolean("enabled", getPIDController().isEnabled());
-    SmartDashboard.putNumber("output", output);
-    SmartDashboard.putBoolean("isFinished", false);
-    SmartDashboard.putNumber("setpoint", getPIDController().getSetpoint());
-
-    Robot.drivetrain.autodrive(-output, -output);
+    // Use output to drive your system, like a motor
+    // e.g. yourMotor.set(output);
+    Robot.drivetrain.autodrive(output, output);
   }
 
   @Override
   protected boolean isFinished() {
-    SmartDashboard.putBoolean("isFinished", true);
     Robot.drivetrain.autodrive(0.0,0.0);
     return true;
-  }
-
-  protected void end() {
-  }
-
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
   }
 }
