@@ -38,7 +38,7 @@ public class Drivetrain extends Subsystem {
   private final DifferentialDrive DRIVE = new DifferentialDrive(leftController, rightController);
 
   boolean isToggled = false;
-
+  float speed = 0.5f;
   
 public void drive(OI oi) {
   
@@ -73,7 +73,6 @@ public void drive(OI oi) {
   //   return; 
   // }
 
-  float speed = 0.5f;
 
 
   if(oi.get(OI.Button.changeSpeed)) {
@@ -88,6 +87,8 @@ public void drive(OI oi) {
   else{
     speed = 0.5f;
   }
+
+  
   DRIVE.tankDrive(oi.getLeftJoystick('Y') * speed, oi.getRightJoystick('Y') * speed);
 
 }

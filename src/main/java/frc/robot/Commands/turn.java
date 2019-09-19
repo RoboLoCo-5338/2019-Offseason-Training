@@ -23,7 +23,7 @@ public class turn extends PIDCommand {
    public turn(double angle) {
     // Intert a subsystem name and PID values here
 
-    super(0.42375, 0, 0.1);
+    super(0.43375, 0, 0.4);
 
     requires(Robot.drivetrain);
     requires(Robot.sensors);

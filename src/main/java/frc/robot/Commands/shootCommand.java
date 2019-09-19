@@ -5,6 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+//a story by abby (this is more important than coding sorry ayush and vinay)
 //once upon a time there was a bunny named goerge
 //goerge was sad because his name was weird
 //he cried
@@ -14,6 +15,16 @@
 //and goerge said im crying because my name is goerge
 //then the bird said thats a stupid name go die
 //goerge got even more sad
+
+//~the next day~
+//goerge had turned into a raisin from crying 
+//he was in his house eating ice cream and watching the bachelor 
+//suddenly, the bird crashed through goerge's window 
+//he started laughing at goerge
+//he said why are you a raisin goerge youre a rabbit not a food
+//goerge was sad because he liked raisins
+//:(
+
 
 package frc.robot.Commands;
 
