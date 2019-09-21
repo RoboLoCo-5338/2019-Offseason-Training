@@ -9,6 +9,7 @@ package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -37,7 +38,12 @@ public class Drivetrain extends Subsystem {
 public void drive(OI oi){
 
   float speed = 0.3f;
-
+  double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0.0);
+  if(oi.get(OI.Button.limelight)){
+    speed = 0.03f;
+    autodrive(-tx * speed + oi.getLeftJoystick('Y') * 0.5, tx * speed + oi.getLeftJoystick('Y') * 0.5);
+    return;
+  }
 
   if(oi.get(OI.Button.changeSpeed)) {
     isToggled = !isToggled;
