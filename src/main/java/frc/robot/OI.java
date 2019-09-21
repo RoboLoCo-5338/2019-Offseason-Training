@@ -31,7 +31,7 @@ public class OI {
         case shooter:
             return leftController.getRawButton(5);
         case limelight:
-            return leftController.getRawButton(2);
+            return leftController.getRawButton(3);
         default:
             return false;
         }
