@@ -24,10 +24,7 @@ public class Shooter extends Subsystem {
   double shootingSpeed = 0.0;
 
   public void shoot(OI oi){
-    if(oi.get(OI.Button.shooter)) {
-      isToggled = !isToggled;
-    }
-    if(isToggled){
+    if(oi.get(OI.Axis.shooter) > 0.0) {
       shootingSpeed = 0.5f; 
     }
     else{
