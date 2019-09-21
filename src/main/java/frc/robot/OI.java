@@ -28,15 +28,8 @@ public class OI {
         case changeSpeed:
             //toggles between fast and slow
             return leftController.getRawButtonReleased(5);
-
-        case gate:
-            //turns on/off gate wheel
-            return leftController.getRawButtonReleased(6);
-
-        //case shooter:
-            //turns on/off shooter wheel
-            //return leftController.getRawButtonReleased(1);
-
+        case shooter:
+            return leftController.getRawButton(5);
         default:
             return false;
         }

@@ -29,7 +29,7 @@ public class driveForward extends PIDCommand {
 
     this.setpoint(distance);
 
-    getPIDController().setOutputRange(-0.5, 0.5);
+    getPIDController().setOutputRange(0.5, -0.5);
 
     getPIDController().enable();
     
@@ -55,7 +55,7 @@ public class driveForward extends PIDCommand {
     SmartDashboard.putBoolean("isFinished", false);
     SmartDashboard.putNumber("setpoint", getPIDController().getSetpoint());
 
-    Robot.drivetrain.autodrive(-output, -output);
+    Robot.drivetrain.autodrive(output, output);
   }
 
   @Override
