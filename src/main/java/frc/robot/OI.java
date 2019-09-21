@@ -33,9 +33,9 @@ public class OI {
             //turns on/off gate wheel
             return leftController.getRawButtonReleased(6);
 
-        case shooter:
+        //case shooter:
             //turns on/off shooter wheel
-            return leftController.getRawButtonReleased(1);
+            //return leftController.getRawButtonReleased(1);
 
         default:
             return false;
