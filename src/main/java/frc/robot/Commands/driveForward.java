@@ -29,7 +29,7 @@ public class driveForward extends PIDCommand {
 
     this.setpoint(distance);
 
-    getPIDController().setOutputRange(0.5, -0.5);
+    getPIDController().setOutputRange(-0.5, 0.5);
 
     getPIDController().enable();
     
