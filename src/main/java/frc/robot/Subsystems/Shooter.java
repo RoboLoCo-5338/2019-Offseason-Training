@@ -24,7 +24,7 @@ public class Shooter extends Subsystem {
   
 
   //change talon ids
-  public final WPI_TalonSRX gateTalon = new WPI_TalonSRX(2);
+  public final WPI_TalonSRX gateTalon = new WPI_TalonSRX(6);
   public final WPI_TalonSRX shooterTalon = new WPI_TalonSRX(4);
 
   boolean gateTogg = false;
@@ -35,21 +35,13 @@ public class Shooter extends Subsystem {
   public void shootBalls(OI oi) {
   
     if(oi.get(OI.Button.shooter)) {
-      shootTogg = !shootTogg;
+      shooterTalon.set(0.3);
     }
 
     if(oi.get(OI.Button.gate)) {
       gateTogg = !gateTogg;
     }
-
-
-    if(shootTogg) {
-      shootSpeed = 1.0;
-    }
-    else{
-      shootSpeed = 0.0;
-    }
-
+    
     if(gateTogg) {
       gateSpeed = 1.0;
     }
@@ -58,7 +50,7 @@ public class Shooter extends Subsystem {
     }
 
     gateTalon.set(gateSpeed);
-    shooterTalon.set(shootSpeed);
+  
   }
   @Override
   public void initDefaultCommand() {
