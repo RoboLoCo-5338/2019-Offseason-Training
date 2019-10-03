@@ -35,7 +35,7 @@ public class shootCommand extends Command {
   public shootCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-   // requires(Robot.shooter);
+    requires(Robot.shooter);
   }
 
   // Called just before this Command runs the first time
@@ -46,7 +46,7 @@ public class shootCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  //  Robot.shooter.shootBalls(Robot.oi);
+    Robot.shooter.shootBalls(Robot.oi);
   }
 
   // Make this return true when this Command no longer needs to run execute()

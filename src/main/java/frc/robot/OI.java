@@ -35,7 +35,7 @@ public class OI {
 
         case shooter:
             //turns on/off shooter wheel
-            return leftController.getRawButtonReleased(1);
+            return leftController.getRawAxis(3) > 0;
 
         case limelight:
             return leftController.getRawButton(3);

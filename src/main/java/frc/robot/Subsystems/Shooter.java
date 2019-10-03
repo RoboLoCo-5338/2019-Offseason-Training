@@ -8,6 +8,7 @@
 package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.Commands.shootCommand;
 
@@ -24,7 +25,7 @@ public class Shooter extends Subsystem {
   
 
   //change talon ids
-  public final WPI_TalonSRX gateTalon = new WPI_TalonSRX(6);
+  public final WPI_TalonSRX gateTalon = new WPI_TalonSRX(2);
   public final WPI_TalonSRX shooterTalon = new WPI_TalonSRX(4);
 
   boolean gateTogg = false;
@@ -34,9 +35,14 @@ public class Shooter extends Subsystem {
 
   public void shootBalls(OI oi) {
   
-    if(oi.get(OI.Button.shooter)) {
-      shooterTalon.set(0.3);
-    }
+    // if(oi.get(OI.Button.shooter)) {
+    //   shooterTalon.set(0.9);
+    // } else {
+    //   shooterTalon.set(0.0);
+    // }
+
+    SmartDashboard.putBoolean("button pressed", gateTogg);
+
 
     if(oi.get(OI.Button.gate)) {
       gateTogg = !gateTogg;
@@ -50,6 +56,7 @@ public class Shooter extends Subsystem {
     }
 
     gateTalon.set(gateSpeed);
+    shooterTalon.set(gateSpeed);
   
   }
   @Override
