@@ -24,6 +24,7 @@ public class shootCommand extends Command {
   @Override
   protected void execute() {
     Robot.shooter.shoot(Robot.oi);
+    Robot.shooter.openGate(Robot.oi);
   }
 
   // Make this return true when this Command no longer needs to run execute()
