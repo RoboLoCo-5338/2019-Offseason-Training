@@ -19,18 +19,26 @@ import frc.robot.Commands.shootCommand;
 public class Shooter extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final WPI_TalonSRX shootingMotor = new WPI_TalonSRX(6);
+  private final WPI_TalonSRX shootingMotor = new WPI_TalonSRX(2);
+  private final WPI_TalonSRX gate = new WPI_TalonSRX(4);
   boolean isToggled = false;
   double shootingSpeed = 0.0;
 
   public void shoot(OI oi){
-    if(oi.get(OI.Axis.shooter) > 0.0) {
-      shootingSpeed = 0.5f; 
-    }
-    else{
-      shootingSpeed = 0.0;
-    }
+    shootingSpeed = oi.getShootAxis(3);
     shootingMotor.set(shootingSpeed);
+  }
+  public void openGate(OI oi){
+    if(oi.get(OI.Button.gateButton)){
+      isToggled = !isToggled;
+      if(isToggled){
+        shootingSpeed = 0.3;
+      }
+      else{
+        shootingSpeed = 0;
+      }
+      gate.set(shootingSpeed);
+    }
   }
   @Override
   public void initDefaultCommand() {

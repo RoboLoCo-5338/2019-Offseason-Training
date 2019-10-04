@@ -20,7 +20,7 @@ public class OI {
 
     // Create enum for different buttons
     public enum Button {
-        changeSpeed, limelight, shooter
+        changeSpeed, limelight, gateButton
     }
 
     public boolean get(final Button button) {
@@ -28,13 +28,16 @@ public class OI {
         case changeSpeed:
             //toggles between fast and slow
             return leftController.getRawButtonReleased(5);
-        case shooter:
-            return leftController.getRawButton(5);
         case limelight:
             return leftController.getRawButton(3);
+        case gateButton:
+            return leftController.getRawButton(6);
         default:
             return false;
         }
+    }
+    public double getShootAxis(final int input){
+        return leftController.getRawAxis(input);
     }
 
     // Public method that returns the left joystick's deadzone-adjusted values

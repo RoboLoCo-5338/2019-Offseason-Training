@@ -13,6 +13,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.Commands.driveCommand;
 //import frc.robot.Commands.turn;
@@ -40,6 +41,8 @@ public void drive(OI oi){
 
   float speed = 0.3f;
   double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0.0);
+
+  SmartDashboard.putNumber("shooter", oi.getShootAxis(3));
   if(oi.get(OI.Button.limelight)){
     speed = 0.03f;
     autodrive(-tx * speed + oi.getLeftJoystick('Y') * 0.5, tx * speed + oi.getLeftJoystick('Y') * 0.5);
@@ -58,6 +61,7 @@ public void drive(OI oi){
   else{
     speed = 0.5f;
   }
+  
   DRIVE.tankDrive(oi.getLeftJoystick('Y') * speed, oi.getRightJoystick('Y') * speed);
 
 }
