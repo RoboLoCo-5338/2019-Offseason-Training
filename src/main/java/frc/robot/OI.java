@@ -16,19 +16,33 @@ public class OI {
 
     // Create joysticks
     private static final Joystick leftController = new Joystick(0);
-    private static final Joystick rightController = new Joystick(0);
+    //private static final Joystick rightController = new Joystick(0);
 
     // Create enum for different buttons
     public enum Button {
-        LOL_1, LOL_2
+        changeSpeed, gate, shooter, limelight, perpLimelight
     }
 
     public boolean get(final Button button) {
         switch (button) {
-        case LOL_1:
-            return leftController.getRawButton(0);
-        case LOL_2:
-            return rightController.getRawButton(0);
+        case changeSpeed:
+            //toggles between fast and slow
+            return leftController.getRawButtonReleased(5);
+
+        case gate:
+            //turns on/off gate wheel
+            return leftController.getRawButtonReleased(6);
+
+        case shooter:
+            //turns on/off shooter wheel
+            return leftController.getRawAxis(3) > 0;
+
+        case limelight:
+            return leftController.getRawButton(3);
+
+        case perpLimelight:
+            return leftController.getRawButton(4);
+
         default:
             return false;
         }
