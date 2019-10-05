@@ -35,11 +35,11 @@ public class Shooter extends Subsystem {
 
   public void shootBalls(OI oi) {
   
-    // if(oi.get(OI.Button.shooter)) {
-    //   shooterTalon.set(0.9);
-    // } else {
-    //   shooterTalon.set(0.0);
-    // }
+    if(oi.get(OI.Button.shooter)) {
+      shooterTalon.set(1.0);
+    } else {
+      shooterTalon.set(0.0);
+    }
 
     SmartDashboard.putBoolean("button pressed", gateTogg);
 
@@ -49,14 +49,14 @@ public class Shooter extends Subsystem {
     }
     
     if(gateTogg) {
-      gateSpeed = 1.0;
+      gateSpeed = 0.75;
     }
     else{
       gateSpeed = 0.0;
     }
 
     gateTalon.set(gateSpeed);
-    shooterTalon.set(gateSpeed);
+    //shooterTalon.set(gateSpeed);
   
   }
   @Override
